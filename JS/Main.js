@@ -2,7 +2,7 @@
 
 var canvas = document.getElementById("myCanvas");
 var buttons = document.getElementsByClassName("Button");
-var ColumnButtons = document.getElementsByClassName("columnButton");
+var ColumnButtons = document.getElementById("ColumnsContainter");
 var ctx = canvas.getContext("2d");
 
 var player1Color = "#FFC0CB";
@@ -14,6 +14,7 @@ var dx = 55;
 var dy;
 
 function drawPlayerCircle(player,row,Column) {
+    
     var p_x =55+ ((Column-1)*100);
     var p_y =55+ ((row)*100);
 
@@ -33,7 +34,7 @@ function drawPlayerCircle(player,row,Column) {
 }
 
 function drawGameBoard(){
-    HideButtons();
+    HideButtons(); 
 
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
@@ -72,10 +73,18 @@ function HideButtons(){
     }
 }
 
-function EnableColumn(){
-    for(let value of ColumnButtons){
+function ShowButtons(){
+    for(let value of buttons){
         value.style.display = "block";
     }
+}
+
+function DisableColumn(){
+    ColumnButtons.style.display = "none";
+}
+
+function EnableColumn(){
+    ColumnButtons.style.display = "initial";
 }
 
 function Highlights(event){
@@ -138,9 +147,13 @@ function Highlighter(Column){
 //Game Functions 
 
 function CreateGameBoardArray(){
-    let GameBoardArray = Array.from({ length: 6 }, () => 
-        Array.from({ length: 7 }, () => 0)
-    );
+    const R=6, C=7;
+    const val = 0;
+
+    var GameBoardArray = Array(R);
+    for(var i= 0; i<R; i++){
+        GameBoardArray[i] = Array(C).fill(val);
+    }
 
     return GameBoardArray;
 }
@@ -158,7 +171,7 @@ function tokenCheck(Column,GameBoard,player){
             GameBoard[chk_row][Column-1]=player;
             Available=true;
         }else if(chk_row>0){
-            console.log("INVOKED???");
+        
             chk_row--;
         }else{
             chk_row=9;               
@@ -224,7 +237,7 @@ function horizontalCheck(GameBoard,Row,Column,player){
             Leftwards = true;
         }
     }
-    console.log("Horizontal" + count);
+    
     return count;
 }
 
@@ -244,7 +257,7 @@ function DownwardCheck(GameBoard,Row,Column,Player){
             Downwards = true;
         }
     }
-    console.log("Vertical:" + count);
+    
     return count;
 }
 

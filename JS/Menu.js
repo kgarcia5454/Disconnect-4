@@ -1,10 +1,15 @@
 
 function drawMenu(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+   
 
+    HideOptions();
+    DisableColumn();
+    ShowButtons();
 
     ctx.beginPath();
     ctx.rect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle= "#00008b";
+    ctx.fillStyle= " #00008b";
     ctx.fill(); 
     ctx.closePath();
 
@@ -13,13 +18,14 @@ function drawMenu(){
 }
 
 function drawTitle(){
-    var Title = "Connect 4?";
+    var Title = "Dis-connect 4";
+
     var gradient = ctx.createLinearGradient(0, 0, 300, 0);
     gradient.addColorStop(0, "rgb(223, 223, 223)");
     gradient.addColorStop(0.42, "rgb(148, 187, 233)");
     gradient.addColorStop(1, "rgb(148, 187, 233)");
 
-    ctx.font = "120px Verdana";
+    ctx.font = "80px Geneva";
     ctx.textAlign = "center";
     ctx.fillStyle = gradient;
     ctx.shadowColor = "#00000067";

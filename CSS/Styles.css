@@ -4,11 +4,13 @@
 }
 
 body,html{
-    height: 100%;
     width: 100%;
+    height: 100%;
     touch-action: manipulation;
     background: linear-gradient(to right, #373b44, #4286f4);
+    overflow: hidden;
 }
+
 
 #myCanvas{
     position: absolute;
@@ -17,8 +19,9 @@ body,html{
     
 }
 
-.Button{
-    position:absolute;
+.Button,.OptionButton{
+    position: relative;
+    display: block;
     background: #94bbe9;  
     box-shadow: -15px 10px #00000067 ;
     border: 3px solid black ;
@@ -31,28 +34,20 @@ body,html{
     cursor: pointer;
 }
 
-#Start{
-    top:37vh;
-    left:37vw;
-}
-
-#DRM{
-    top:47vh;
-    left:37vw;
-}
 
 
-#Opt{
-    top:57vh;
-    left:37vw;
+.Button:hover{
+    border: 3px solid #ffffff;
 }
+
+.Button:active{
+    border: 3px solid #637e9c;
+    box-shadow: -8px 3px #00000067 ;
+    transform: translateY(4px);
+}
+
+
 @media screen and (min-width: 801px){
-
-    #myCanvas{
-        height: 65%;
-        width :37.8%;
-    }
-
 
     #canvascontainer{
         padding: 140px 0;
@@ -63,22 +58,97 @@ body,html{
         height: 100%;
     }
 
+    #myCanvas{
+        height: 65%;
+        width :37.8%;
+        
+    }
     
+
+    #buttonContainer{
+        position:absolute;
+        width: 130%;
+        height: 100%;
+
+        padding-top: 23vh;
+        padding-left: 3vw;
+    }
+
+    .Button{
+        margin-bottom: 40px;
+    }  
+
+    #Options{
+        position:absolute;
+        width: 130%;
+        height: 100%;
+
+        padding-top: 6vh;
+        padding-left: 0.5vw;
+    }
+    
+
+    #Back{
+        position: relative;
+        height: 5%;
+        width: 7%;
+        
+    }
+
+    #Player1Color{
+        position: relative;
+        margin-top: 5.2vh;
+        margin-left: 13.5vw;
+        height: 3%;
+        width: 8%;
+    }
+
+    #P1Submit{
+        position: relative;
+        margin-top: -3.8vh;
+        margin-left: 27vw;
+        height: 4%;
+        width: 7%;
+    }
+
+    #Player2Color{
+        position: relative;
+        margin-top: 5.2vh;
+        margin-left: 13.5vw;
+        height: 3%;
+        width: 8%;
+    }
+
+    #P2Submit{
+        position: relative;
+        margin-top: -3.8vh;
+        margin-left: 27vw;
+        height: 4%;
+        width: 7%;
+    }
+
+
     #ColumnsContainter{
+        position:absolute;
         height: 100%;
         width: 100%;
     }
     
-    
     .columnButton{
         position: relative;
-        z-index:1;
-        display: none;
         height:60%;
-        width:11.3%;
+        width:4.3%;
         float:left;
-        margin-left:1.8%;
+        margin-left: 0.9vw;
         opacity:0;
+    }
+
+    #GameBack{
+        position: absolute;
+        top:58vh;
+        left:1vw;
+        width: 5%;
+
     }
 
 
@@ -89,7 +159,6 @@ body,html{
     #myCanvas{
         width: 100%;
         height: 100%;
-        top: 0vh;
     }
 
     #canvascontainer{
@@ -103,10 +172,15 @@ body,html{
     
     }
 
+    .Button{
+
+        height:8%;
+        width:75%;
+    }
+
     .columnButton{
         position: relative;
         z-index:1;
-        display: none;
         height:95%;
         width:12.06%;
         float:left;
@@ -115,19 +189,19 @@ body,html{
     }
 
     #Start{
-        top:20vh;
-        left:43vw;
+        top:27vh;
+        left:16vw;
     }
     
     #DRM{
-        top:42vh;
-        left:43vw;
+        top:38vh;
+        left:16vw;
     }
     
     
     #Opt{
-        top:52vh;
-        left:43vw;
+        top:49vh;
+        left:16vw;
     }
     
 }
