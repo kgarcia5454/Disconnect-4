@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Test Game</title>
+        <link rel="stylesheet" href="/CSS/Styles.css">
+    </head>
+    <body onload="drawMenu()">
+        
+        <div id="canvascontainer">
+            <canvas id="myCanvas" width="720" height="650"></canvas>
+
+            <div id="buttonContainer">
+                <button class="Button" onclick = "game1Start()" id="Start"> Start </button>
+                <button class="Button" id="DRM"> Disrespectful Mode? </button>
+                <button class="Button"  id="Opt"> Options </button>
+            </div>    
+
+            <div id="ColumnsContainter">
+                
+                <button onmouseover="Highlights(event)" onmouseout="Unlights(event)" value="1" class="columnButton" id="column1"></button>
+                <button onmouseover="Highlights(event)" onmouseout="Unlights(event)" value="2" class="columnButton" id="column2"></button>
+                <button onmouseover="Highlights(event)" onmouseout="Unlights(event)" value="3" class="columnButton" id="column3"></button>
+                <button onmouseover="Highlights(event)" onmouseout="Unlights(event)" value="4" class="columnButton" id="column4"></button>
+                <button onmouseover="Highlights(event)" onmouseout="Unlights(event)" value="5" class="columnButton" id="column5"></button>
+                <button onmouseover="Highlights(event)" onmouseout="Unlights(event)" value="6" class="columnButton" id="column6"></button>
+                <button onmouseover="Highlights(event)" onmouseout="Unlights(event)" value="7" class="columnButton" id="column7"></button>
+            </div>
+
+        </div>
+    </body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/JS/Menu.js"></script>
+    <script src="/JS/Game1.js"></script>
+    <script src="/JS/Main.js"></script>
+
+</html>
