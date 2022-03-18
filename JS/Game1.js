@@ -25,7 +25,7 @@ function Game1(){
             Win = WinCheck(GameBoard,row,pressed,player);
 
             if(Win){
-                console.log("YOU WON A TETRIS:" + player);
+                console.log("YOU WON Player:" + player);
             }
 
 
