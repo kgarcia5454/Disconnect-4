@@ -11,7 +11,7 @@
             
             <div id="buttonContainer">
                 <button class="Button" onclick = "game1Start()" id="Start"> Classic Mode </button>
-                <button class="Button" id="DRM"> Dis-connect Mode </button>
+                <button class="Button" onclick = "game2Start()" id="DRM"> Dis-connect Mode </button>
                 <button class="Button" id="Opt" onclick="drawOptions()"> Options </button>
             </div>    
 
@@ -23,7 +23,14 @@
                 <button onmouseover="Highlights(event)" onmouseout="Unlights(event)" value="5" class="columnButton" id="column5"></button>
                 <button onmouseover="Highlights(event)" onmouseout="Unlights(event)" value="6" class="columnButton" id="column6"></button>
                 <button onmouseover="Highlights(event)" onmouseout="Unlights(event)" value="7" class="columnButton" id="column7"></button>
+                
+            </div>
+
+            <div id="Controls">
                 <button class="OptionButton" onclick = "drawMenu()" id="GameBack"> Quit </button>
+
+                <button class="Game2Button" value = "Drop" onclick = "DropMode()" id="Drop">Drop</button>
+                <button class="Game2Button" value = "Move" onclick = "MoveMode()" id="Move">Move</button>
             </div>
 
             <div id="Options">
@@ -40,6 +47,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="../JS/Menu.js"></script>
     <script src="../JS/Game1.js"></script>
+    <script src="../JS/Game2.js"></script>
     <script src="../JS/Options.js"></script>
     <script src="../JS/Main.js"></script>
 

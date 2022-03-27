@@ -1,15 +1,17 @@
-
- var player = 1; 
+var player = 1;
 
 function game1Start(){
+    player = 1;
     
     drawGameBoard();
+    EnableColumn()
+    ShowGameBack();
     Game1();
 }
 
 
 function Game1(){
-    player = 1;
+    
     var GameBoard = CreateGameBoardArray();
 
     var row = 9;

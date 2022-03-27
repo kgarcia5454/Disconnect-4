@@ -1,8 +1,9 @@
 
 function drawMenu(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-   
 
+    HideGameBack();
+    hideGame2Buttons();
     HideOptions();
     DisableColumn();
     ShowButtons();

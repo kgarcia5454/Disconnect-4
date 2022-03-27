@@ -3,6 +3,12 @@
 var canvas = document.getElementById("myCanvas");
 var buttons = document.getElementsByClassName("Button");
 var ColumnButtons = document.getElementById("ColumnsContainter");
+var Game2Buttons = document.getElementsByClassName("Game2Button");
+var GameBack = document.getElementById("GameBack");
+var Controls = document.getElementById("Controls");
+
+
+
 var ctx = canvas.getContext("2d");
 
 var player1Color = "#FFC0CB";
@@ -14,7 +20,13 @@ var dx = 55;
 var dy;
 
 function drawPlayerCircle(player,row,Column) {
-    
+
+    if(player == 1 ){
+        color=player1Color;
+    }else{
+        color=player2Color;
+    }
+
     var p_x =55+ ((Column-1)*100);
     var p_y =55+ ((row)*100);
 
@@ -34,6 +46,11 @@ function drawPlayerCircle(player,row,Column) {
 }
 
 function drawGameBoard(){
+
+    if(player==1){
+        color=player1Color;
+    }
+
     HideButtons(); 
 
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -53,7 +70,7 @@ function drawGameBoard(){
         }
     }
 
-    EnableColumn()
+    
 }
 
 function drawGameBoardSlots(){
@@ -87,7 +104,38 @@ function EnableColumn(){
     ColumnButtons.style.display = "initial";
 }
 
+function ShowGameBack(){
+    GameBack.style.display="initial";
+    Controls.style.display="initial";
+    
+}
+
+function HideGameBack(){
+    GameBack.style.display="none";
+    Controls.style.display="none";
+}
+
+function showGame2Buttons(){
+    
+    for(let value of Game2Buttons){
+        value.style.display = "initial";
+    }
+}
+
+function hideGame2Buttons(){
+    for(let value of Game2Buttons){
+        value.style.display = "none";
+    }
+    
+}
+
 function Highlights(event){
+    if(player == 1 ){
+        color=player1Color;
+    }else{
+        color=player2Color;
+    }
+
     var Col_num = event.target.value;
 
     var h_x = 5 + ((Col_num-1)*100);

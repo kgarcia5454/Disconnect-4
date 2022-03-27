@@ -19,7 +19,7 @@ body,html{
     
 }
 
-.Button,.OptionButton{
+.Button,.OptionButton,.Game2Button{
     position: relative;
     display: block;
     background: #94bbe9;  
@@ -36,11 +36,13 @@ body,html{
 
 
 
-.Button:hover{
+
+
+.Button:hover ,.OptionButton:hover , .Game2Button:hover{
     border: 3px solid #ffffff;
 }
 
-.Button:active{
+.Button:active, .OptionButton:active, .Game2Button:active{
     border: 3px solid #637e9c;
     box-shadow: -8px 3px #00000067 ;
     transform: translateY(4px);
@@ -144,11 +146,27 @@ body,html{
     }
 
     #GameBack{
-        position: absolute;
-        top:58vh;
-        left:1vw;
-        width: 5%;
+        position: relative;
+        top:1vh;
+        left: 1vw;
+        height: 80%;
+        width: 12%;
+    }
 
+    #Controls{
+        position: absolute;
+        margin-top: 56vh;
+        height: 8%;
+        width: 37.7%;
+    }
+
+    .Game2Button{
+        position: relative;
+        top: 1vh;
+        left:4.5vw;
+        margin-left: 1vw;
+        height: 80%;
+        width: 32%;
     }
 
 
