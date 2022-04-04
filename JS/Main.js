@@ -2,7 +2,7 @@
 
 var canvas = document.getElementById("myCanvas");
 var buttons = document.getElementsByClassName("Button");
-var ColumnButtons = document.getElementById("ColumnsContainter");
+var ColumnButtons = document.getElementById("ColumnsContainer");
 var Game2Buttons = document.getElementsByClassName("Game2Button");
 var GameBack = document.getElementById("GameBack");
 var Controls = document.getElementById("Controls");

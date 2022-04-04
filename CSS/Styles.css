@@ -35,9 +35,6 @@ body,html{
 }
 
 
-
-
-
 .Button:hover ,.OptionButton:hover , .Game2Button:hover{
     border: 3px solid #ffffff;
 }
@@ -130,7 +127,7 @@ body,html{
     }
 
 
-    #ColumnsContainter{
+    #ColumnsContainer{
         position:absolute;
         height: 100%;
         width: 100%;
@@ -185,9 +182,26 @@ body,html{
     }
     
 
-    #ColumnsContainter{
+    #ColumnsContainer{
         height: 100%;
     
+    }
+
+
+    #GameBack{
+        position: absolute;
+        top:88vh;
+        left: 2vw;
+        height: 10%;
+        width: 15%;
+    }
+
+    .Game2Button{
+        top: 88vh;
+        left: 20vw;
+        width: 37%;
+        height: 10%;
+        margin-left: 1vw;
     }
 
     .Button{
@@ -221,6 +235,47 @@ body,html{
         top:49vh;
         left:16vw;
     }
+
+    #Back{
+        position: relative;
+        top: 3vh;
+        left:5vw;
+        height: 5%;
+        width: 20%;  
+    }
+
+    #Player1Color{
+        position: relative;
+        top: 20.7vh;
+        left:37vw;
+        height: 3%;
+        width: 60%;
+    }
+
+    #P1Submit{
+        position: relative;
+        top:23.7vh;
+        left:18vw;
+        height: 4%;
+        width: 70%;
+    }
+
+    #Player2Color{
+        position: relative;
+        top:27.7vh;
+        left: 37vw;
+        height: 3%;
+        width: 60%;
+    }
+
+    #P2Submit{
+        position: relative;
+        top:30.7vh;
+        left:18vw;
+        height: 4%;
+        width: 70%;
+    }
+
     
 }
 
