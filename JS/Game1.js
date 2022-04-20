@@ -4,6 +4,7 @@ function game1Start(){
     player = 1;
     
     drawGameBoard();
+    hideGame2Buttons();
     EnableColumn()
     ShowGameBack();
     Game1();
@@ -30,6 +31,8 @@ function Game1(){
 
             if(Win){
                 console.log("YOU WON Player:" + player);
+                DisableColumn();
+                drawWinScreen(player);
             }
 
 

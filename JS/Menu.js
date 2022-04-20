@@ -21,18 +21,14 @@ function drawMenu(){
 function drawTitle(){
     var Title = "Dis-connect 4";
 
-    var gradient = ctx.createLinearGradient(0, 0, 300, 0);
-    gradient.addColorStop(0, "rgb(223, 223, 223)");
-    gradient.addColorStop(0.42, "rgb(148, 187, 233)");
-    gradient.addColorStop(1, "rgb(148, 187, 233)");
+    
 
-    ctx.font = "80px Geneva";
+    ctx.font = "80px Sans-serif";
     ctx.textAlign = "center";
-    ctx.fillStyle = gradient;
-    ctx.shadowColor = "#00000067";
-    ctx.shadowOffsetX=-10;
-    ctx.shadowOffsetY=10;
-    ctx.shadowBlur = 4;
+    ctx.strokeStyle = "black"
+    ctx.fillStyle = "white";
+    ctx.lineWidth= 12;
+    ctx.strokeText(Title,canvas.width/2,canvas.height/6);
     ctx.fillText(Title,canvas.width/2,canvas.height/6);
-    ctx.shadowColor='rgba(0,0,0,0)';
+    
 }

@@ -7,8 +7,6 @@ var Game2Buttons = document.getElementsByClassName("Game2Button");
 var GameBack = document.getElementById("GameBack");
 var Controls = document.getElementById("Controls");
 
-
-
 var ctx = canvas.getContext("2d");
 
 var player1Color = "#FFC0CB";
@@ -240,7 +238,6 @@ function WinCheck(GameBoard,Row,Column,Player){
     var UL_win = UpLeftCheck(GameBoard,Row,Column,Player);
 
     if(H_win>=4||V_win>=4||UR_win>=4||UL_win>=4){
-        console.log("WINNER: "+Player);
         win = true;
     }
 
@@ -393,3 +390,10 @@ function UpLeftCheck(GameBoard,Row,Column,Player){
     return count;
 }
 
+function drawWinScreen(Player){
+
+    var WinText = "Player "+Player+ " wins!";
+
+    ctx.fillText(WinText,canvas.width/1.9,canvas.height-30);
+
+}

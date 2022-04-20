@@ -2,8 +2,11 @@
 <html lang = "en">
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Disrespectful 4 JS </title>
+        <title>Dis-Connect 4</title>
         <link rel="stylesheet" href="../CSS/Styles.css">
+        <link rel="stylesheet" href="../CSS/MobileStyles.css">
+        <link rel="stylesheet" href="../CSS/TabletStyles.css">
+        <link rel="icon" href="../favicon.ico" type="image/x-icon">
     </head>
     <body onload="drawMenu()"> 
         <div id="canvascontainer">
@@ -12,7 +15,7 @@
             <div id="buttonContainer">
                 <button class="Button" onclick = "game1Start()" id="Start"> Classic Mode </button>
                 <button class="Button" onclick = "game2Start()" id="DRM"> Dis-connect Mode </button>
-                <button class="Button" id="Opt" onclick="drawOptions()"> Options </button>
+                <button class="Button" onclick="drawOptions()"  id="Opt"> Options </button>
             </div>    
 
             <div id="ColumnsContainer">
@@ -28,18 +31,21 @@
 
             <div id="Controls">
                 <button class="OptionButton" onclick = "drawMenu()" id="GameBack"> Quit </button>
-
                 <button class="Game2Button" value = "Drop" onclick = "DropMode()" id="Drop">Drop</button>
                 <button class="Game2Button" value = "Move" onclick = "MoveMode()" id="Move">Move</button>
             </div>
 
             <div id="Options">
                 <button class="OptionButton" onclick = "drawMenu()" id="Back"> Back </button>
-                <input type="text" id="Player1Color" name="Player1Color">
+                <input type="text" class = "OptionText" id="Player1Color" name="Player1Color">
                 <button class="OptionButton" id="P1Submit" value="P1color"> Submit </button>
 
-                <input type="text" id="Player2Color" name="Player2Color">
+                <input type="text" class = "OptionText" id="Player2Color" name="Player2Color">
                 <button class="OptionButton" id="P2Submit" value="P2color"> Submit </button>
+                <div id = "MessageSection">
+                    <p id="Message"></p>
+                </div>
+                
             </div>
 
         </div>

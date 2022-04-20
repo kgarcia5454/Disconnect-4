@@ -1,4 +1,4 @@
-# Disconnect 4 (Rough Draft)
+# Disconnect 4 
 
 ## Game Modes
 
@@ -32,15 +32,11 @@
    - No troubles if you happen to type in a random word such as "dog" instead of a color into the text box and press submit. The game checks if the word is a color before completing the submission. 
  
 ## To-Do List
-1. **Win Conditions**s
-- Game is able to detect when an 4 in a row has been made. However, there is no screen or effect played when someone has won. This means the game will continue to run even if a 4 in a row has been detected.
 
-   - **Plan:** Disable controls and say which player won. (Draw Line through all 4 token)
-2. **Upgrade UI**
-- The UI, especially the menus, appear as if it was made in the 90s. 
-
-  - **Plan:** Apply more color variety outside of blue. Aswell as adding a bit more visual effects such as opacity. Also, give more feedback to the user such as when the color is changed in the options.
-3. **Network Play** (Ambitious Goal)
+1. **Network Play** (Ambitious Goal)
 - Add network play to the game to allow people use two devices to play the game.
 
   - **No current plan**. 
+
+2. **Document Code** 
+- add comments to all parts of code. This is to ensure I am able to explain my code easily without having to re-read entire scripts. 

@@ -1,198 +1,193 @@
-var player = 1; 
+var player = 1;
 var Drop = 0;
 var Game2Buttons = document.getElementsByClassName("Game2Button");
 var GameBoard;
-var MoveStyle=0;
+var MoveStyle = 0;
 
-function game2Start(){
-
+function game2Start() {
     player = 1;
     GameBoard = CreateGameBoardArray();
-    
+
     drawGameBoard();
     showGame2Buttons();
     ShowGameBack();
-    
 }
 
-function DropMode(){
-
-    console.log("Player detected:::" + player);
-    MoveStyle=1;
+function DropMode() {
+    MoveStyle = 1;
     EnableColumn();
     hideGame2Buttons();
 
-    console.log(GameBoard);
-    console.log("Drop Changed");
-
     var row = 9;
     var Win = false;
-    
-    $("button").unbind().click(function() {
-        var pressed = $(this).val();
-        
-        
-        row=tokenCheck(pressed,GameBoard,player);
 
-        if(row!=9){
-        
-            drawPlayerCircle(player,row,pressed);
-            Win = WinCheck(GameBoard,row,pressed,player);
+    $("button")
+        .unbind()
+        .click(function () {
+            var pressed = $(this).val();
 
-            if(Win){
-                console.log("YOU WON Player:" + player);
+            row = tokenCheck(pressed, GameBoard, player);
+
+            if (row != 9) {
+                drawPlayerCircle(player, row, pressed);
+                Win = WinCheck(GameBoard, row, pressed, player);
+
+                if (Win) {
+                    DisableColumn();
+                    hideGame2Buttons();
+                    drawWinScreen(player);
+                }
+
+                if (player == 1) {
+                    player = 2;
+                } else {
+                    player = 1;
+                }
+
+                MoveStyle = 0;
             }
 
-
-            if(player==1){
-                player=2;
-            }else{player = 1;}
-            console.log("movestyled = 0;");
-            MoveStyle=0; 
-        }
-
-        if(MoveStyle==0){
-            console.log("ended mode")
-            DisableColumn();
-            showGame2Buttons();
-        }
-    });
-
+            if (MoveStyle == 0 && !Win) {
+                DisableColumn();
+                showGame2Buttons();
+            }
+        });
 }
 
-async function MoveMode(){
-    console.log(GameBoard)
-    MoveStyle=1;
+async function MoveMode() {
+    MoveStyle = 1;
     EnableColumn();
     hideGame2Buttons();
 
     var row = 9;
     var new_row = 9;
     var Win = false;
-    
-    $("button").unbind().click(function() {
-        var pressed = $(this).val();
-        
-        
-        row=OpponentTokenCheck(pressed,GameBoard,player);
 
-        console.log("what is row: "+ row);
+    $("button")
+        .unbind()
+        .click(function () {
+            var pressed = $(this).val();
 
-        if(row!=9){
-            MoveOpponentCircle();
-        }else{
-            console.log("No Token Detected")
-            MoveStyle=0;
-        }
+            row = OpponentTokenCheck(pressed, GameBoard, player);
 
-        if(MoveStyle==0){
-            console.log("ended mode")
-            DisableColumn();
-            showGame2Buttons();
-        }
-    });
+            if (row != 9) {
+                MoveOpponentCircle();
+            } else {
+                MoveStyle = 0;
+            }
 
-   
-    
+            if (MoveStyle == 0) {
+                DisableColumn();
+                showGame2Buttons();
+            }
+        });
 }
 
-function OpponentTokenCheck(Column,GameBoard,player){
+function OpponentTokenCheck(Column, GameBoard, player) {
     var Org_Player = player;
 
-    if(player==1){
-        player=2;
-    }else{
-        player=1;
+    if (player == 1) {
+        player = 2;
+    } else {
+        player = 1;
     }
 
     var Available = false;
     var chk_row = 0;
-    
 
-    while(!Available){
-        if(GameBoard[chk_row][Column-1]!=0){
-            if(GameBoard[chk_row][Column-1]==player){
-                GameBoard[chk_row][Column-1]=0
-                ClearSlot(chk_row,Column);
-                Available=true;
-            }else{
-                chk_row=9;
+    while (!Available) {
+        if (GameBoard[chk_row][Column - 1] != 0) {
+            if (GameBoard[chk_row][Column - 1] == player) {
+                GameBoard[chk_row][Column - 1] = 0;
+                ClearSlot(chk_row, Column);
+                Available = true;
+            } else {
+                chk_row = 9;
                 break;
             }
-        }else if(chk_row<5){
-        
+        } else if (chk_row < 5) {
             chk_row++;
-        }else{
-            chk_row=9;               
+        } else {
+            chk_row = 9;
             break;
         }
     }
 
-
-
-    console.log(Org_Player);
-
     player = Org_Player;
 
     return chk_row;
-
 }
 
-function MoveOpponentCircle(){
-
-    console.log("Player detected:::" + player);
+function MoveOpponentCircle() {
     var row = 9;
     var pressed;
-    var Moving
-    
+    var Moving;
 
-    $("button").unbind().click(function() {
-        pressed = $(this).val();
-        
-        Moving = player
+    $("button")
+        .unbind()
+        .click(function () {
+            pressed = $(this).val();
 
-        if(Moving==1){
-            Moving=2;
-        }else{
-            Moving=1;
-        }
-        row=tokenCheck(pressed,GameBoard,Moving);
+            Moving = player;
 
-        if(row!=9){
+            if (Moving == 1) {
+                Moving = 2;
+            } else {
+                Moving = 1;
+            }
+            row = tokenCheck(pressed, GameBoard, Moving);
 
-                GameBoard[row][pressed-1]=Moving
-                drawPlayerCircle(Moving,row,pressed); 
-                row=9;
+            if (row != 9) {
+                GameBoard[row][pressed - 1] = Moving;
+                drawPlayerCircle(Moving, row, pressed);
+                opponentWin=OpponentWinCheck(GameBoard, row, pressed, Moving);
 
-                if(player==1){
-                    player=2;
-                }else{player = 1;}
+                if (opponentWin) {
+                    DisableColumn();
+                    hideGame2Buttons();
+                    drawWinScreen(Moving);
+                }else{
 
+                    row = 9;
 
+                    if (player == 1) {
+                        player = 2;
+                    } else {
+                        player = 1;
+                    }
 
-                console.log("ended mode")
-                DisableColumn();
-                showGame2Buttons();
-
-        }    
-    });
-
+                    DisableColumn();
+                    showGame2Buttons();
+                }
+            }
+        });
 }
 
+function OpponentWinCheck(GameBoard, Row, Column, Player) {
+    var win = false;
 
+    var H_win = horizontalCheck(GameBoard, Row, Column, Player);
+    var V_win = DownwardCheck(GameBoard, Row, Column, Player);
+    var UR_win = UpRightCheck(GameBoard, Row, Column, Player);
+    var UL_win = UpLeftCheck(GameBoard, Row, Column, Player);
 
-function ClearSlot(row,Column){
-    var p_x =55+ ((Column-1)*100);
-    var p_y =55+ ((row)*100);
+    if (H_win >= 4 || V_win >= 4 || UR_win >= 4 || UL_win >= 4) {
+        win = true;
+    }
+
+    return win;
+}
+
+function ClearSlot(row, Column) {
+    var p_x = 55 + (Column - 1) * 100;
+    var p_y = 55 + row * 100;
 
     ctx.beginPath();
-    ctx.arc(p_x,p_y,40,0, Math.PI*2, false);
-    ctx.lineWidth=10;
-    ctx.strokeStyle = "#2c2cc7"
+    ctx.arc(p_x, p_y, 40, 0, Math.PI * 2, false);
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = "#2c2cc7";
     ctx.stroke();
     ctx.fillStyle = "#010145";
     ctx.fill();
     ctx.closePath();
 }
-
-

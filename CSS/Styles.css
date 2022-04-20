@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: sans-serif;
 }
 
 body,html{
@@ -22,18 +23,18 @@ body,html{
 .Button,.OptionButton,.Game2Button{
     position: relative;
     display: block;
-    background: #94bbe9;  
+    background: #ffffffe4;  
+    color: black;
     box-shadow: -15px 10px #00000067 ;
-    border: 3px solid black ;
+    border: 4px solid black ;
     border-radius: 2vw;
     width: 25%;
-    height: 5%;
+    height: 10%;
     text-align: center;
     text-decoration: none;
     font-size: 20px;
     cursor: pointer;
 }
-
 
 .Button:hover ,.OptionButton:hover , .Game2Button:hover{
     border: 3px solid #ffffff;
@@ -44,6 +45,24 @@ body,html{
     box-shadow: -8px 3px #00000067 ;
     transform: translateY(4px);
 }
+
+.OptionText{
+    border:4px solid black;
+    box-shadow: -15px 10px #00000023 ;
+}
+
+
+
+#Message{
+    position:relative;
+    margin-top: 16vh;
+    
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 5vh;
+    color: white;
+}
+
 
 
 @media screen and (min-width: 801px){
@@ -69,7 +88,7 @@ body,html{
         width: 130%;
         height: 100%;
 
-        padding-top: 23vh;
+        padding-top: 20vh;
         padding-left: 3vw;
     }
 
@@ -78,17 +97,29 @@ body,html{
     }  
 
     #Options{
+        
         position:absolute;
-        width: 130%;
+        width: 100%;
         height: 100%;
 
         padding-top: 6vh;
         padding-left: 0.5vw;
     }
+
+    #MessageSection{
+        margin-left: -0.5vw;
+        width: 38%;
+    }
+
+    #Message{
+        position:relative;
+        margin-top: 16vh;
+    }    
     
 
     #Back{
         position: relative;
+        margin-left: 2vw;
         height: 5%;
         width: 7%;
         
@@ -99,7 +130,7 @@ body,html{
         margin-top: 5.2vh;
         margin-left: 13.5vw;
         height: 3%;
-        width: 8%;
+        width: 12%;
     }
 
     #P1Submit{
@@ -115,7 +146,7 @@ body,html{
         margin-top: 5.2vh;
         margin-left: 13.5vw;
         height: 3%;
-        width: 8%;
+        width: 12%;
     }
 
     #P2Submit{
@@ -168,114 +199,3 @@ body,html{
 
 
 }
-
-
-@media screen and (max-width: 800px){
-    #myCanvas{
-        width: 100%;
-        height: 100%;
-    }
-
-    #canvascontainer{
-    
-        height: 100%;
-    }
-    
-
-    #ColumnsContainer{
-        height: 100%;
-    
-    }
-
-
-    #GameBack{
-        position: absolute;
-        top:88vh;
-        left: 2vw;
-        height: 10%;
-        width: 15%;
-    }
-
-    .Game2Button{
-        top: 88vh;
-        left: 20vw;
-        width: 37%;
-        height: 10%;
-        margin-left: 1vw;
-    }
-
-    .Button{
-
-        height:8%;
-        width:75%;
-    }
-
-    .columnButton{
-        position: relative;
-        z-index:1;
-        height:95%;
-        width:12.06%;
-        float:left;
-        margin-left:1.8%;
-        opacity:0;
-    }
-
-    #Start{
-        top:27vh;
-        left:16vw;
-    }
-    
-    #DRM{
-        top:38vh;
-        left:16vw;
-    }
-    
-    
-    #Opt{
-        top:49vh;
-        left:16vw;
-    }
-
-    #Back{
-        position: relative;
-        top: 3vh;
-        left:5vw;
-        height: 5%;
-        width: 20%;  
-    }
-
-    #Player1Color{
-        position: relative;
-        top: 20.7vh;
-        left:37vw;
-        height: 3%;
-        width: 60%;
-    }
-
-    #P1Submit{
-        position: relative;
-        top:23.7vh;
-        left:18vw;
-        height: 4%;
-        width: 70%;
-    }
-
-    #Player2Color{
-        position: relative;
-        top:27.7vh;
-        left: 37vw;
-        height: 3%;
-        width: 60%;
-    }
-
-    #P2Submit{
-        position: relative;
-        top:30.7vh;
-        left:18vw;
-        height: 4%;
-        width: 70%;
-    }
-
-    
-}
-
