@@ -56,6 +56,16 @@ function drawPlayerCircle(player,row,Column) {
         ctx.stroke();
         ctx.closePath();
     }
+
+    //Test of transparency ?
+
+    ctx.beginPath();
+    ctx.arc(p_x,p_y,40,0, Math.PI*2, false);
+    ctx.fillStyle = "rgba(1, 1, 69,0)";
+    ctx.fill();
+    ctx.closePath();
+
+
     
 
 
@@ -161,6 +171,7 @@ function Highlights(event){
 
 
     var Col_num = event.target.value;
+    
    
 
     var h_x = 5 + ((Col_num-1)*100);
@@ -168,7 +179,7 @@ function Highlights(event){
     ctx.beginPath();
     ctx.rect(h_x,5,100,600)
     ctx.strokeStyle = color;
-    ctx.lineWidth = 40;
+    ctx.lineWidth = 2;
 
     ctx.stroke();
    
@@ -266,6 +277,7 @@ function WinCheck(GameBoard,Row,Column,Player){
     var UR_win =UpRightCheck(GameBoard,Row,Column,Player);
     var UL_win = UpLeftCheck(GameBoard,Row,Column,Player);
 
+
     if(H_win>=4||V_win>=4||UR_win>=4||UL_win>=4){
         win = true;
     }
@@ -280,6 +292,12 @@ function horizontalCheck(GameBoard,Row,Column,player){
     var Leftwards = false;
     var Org_Col = Column;
     var count=-1;
+
+    //Drawing Vals
+    var max_col = 9;
+    var min_col = 9;
+    var max_row = 0;
+    var min_row = 9;
     
 
     //Scans all tokens to the right of placed tokens
@@ -288,9 +306,13 @@ function horizontalCheck(GameBoard,Row,Column,player){
             if(Column == 7){
                 Rightwards = true;
             }else{
+                
                 Column++;
             }
+            max_col = Column;
+            max_row = Row;
             count++;
+            
         }else{
             Rightwards = true;
         }
@@ -302,15 +324,25 @@ function horizontalCheck(GameBoard,Row,Column,player){
     while(!Leftwards){
         if(GameBoard[Row][Column-1]==player){
             if(Column == 1){
+               
                 Leftwards = true;
             }else{
+                
+              
                 Column--;
             }
+            min_col = Column;
+            min_row = Row;
             count++;
+            
         }else{
             Leftwards = true;
         }
     }
+    if(count >= 4){
+        drawWinLine(min_col,min_row,max_col,max_row,player);
+    }
+    
     
     return count;
 }
@@ -319,17 +351,28 @@ function DownwardCheck(GameBoard,Row,Column,Player){
     var Downwards = false;
     var count=0;
 
+    var max_col = Column;
+    var min_col = Column;
+    var max_row = 9;
+    var min_row = Row;
+
     while(!Downwards){
         if(GameBoard[Row][Column-1]==Player){
             if(Row == 5){
                 Downwards=true;
             }else{
+                
                 Row++;
+                max_row = Row;
             }
             count++;
         }else{
             Downwards = true;
         }
+    }
+
+    if(count >= 4){
+        drawWinLine(min_col,min_row,max_col,max_row,player);
     }
     
     return count;
@@ -341,6 +384,12 @@ function UpRightCheck(GameBoard,Row,Column,Player){
     var Upright = false;
     var Downleft = false;
 
+    //Drawing Vals
+    var max_col = 9;
+    var min_col = 9;
+    var max_row = 9;
+    var min_row = 9;
+
     var count = -1;
 
     while(!Upright){
@@ -348,6 +397,8 @@ function UpRightCheck(GameBoard,Row,Column,Player){
             if(Row==0||Column==7){
                 Upright=true;
             }else{
+                max_col = Column
+                max_row = Row;
                 Row--;
                 Column++;
             }
@@ -365,13 +416,21 @@ function UpRightCheck(GameBoard,Row,Column,Player){
             if(Row==5||Column==1){
                 Downleft=true;
             }else{
+               
                 Row++;
+                min_row = Row;
                 Column--;
+                min_col = Column
             }
             count++;
         }else{
             Downleft=true;
         }
+    }
+
+    if(count >= 4){
+        console.log("upright")
+        drawWinLine(min_col,min_row,max_col,max_row,player);
     }
 
     return count;
@@ -383,6 +442,12 @@ function UpLeftCheck(GameBoard,Row,Column,Player){
     var Upleft = false;
     var Downright = false;
 
+    //Drawing Vals
+    var max_col = 9;
+    var min_col = 9;
+    var max_row = 9;
+    var min_row = 9;
+
     var count = -1;
 
     while(!Upleft){
@@ -390,6 +455,8 @@ function UpLeftCheck(GameBoard,Row,Column,Player){
             if(Row==0||Column==1){
                 Upleft=true;
             }else{
+                max_col = Column
+                min_row = Row
                 Row--;
                 Column--;
             }
@@ -407,6 +474,8 @@ function UpLeftCheck(GameBoard,Row,Column,Player){
             if(Row==5||Column==7){
                 Downright=true;
             }else{
+                min_col = Column;
+                max_row = Row;
                 Row++;
                 Column++;
             }
@@ -415,6 +484,11 @@ function UpLeftCheck(GameBoard,Row,Column,Player){
             Downright=true;
         }
     }
+
+    if(count >= 4){
+        drawWinLine(min_col,min_row,max_col,max_row,player);
+    }
+
 
     return count;
 }
@@ -432,3 +506,30 @@ function drawWinScreen(Player){
     ctx.fillText(WinText,canvas.width/1.9,canvas.height-30);
 
 }
+
+function drawWinLine(min_c,min_r,max_c,max_r,Player){
+
+    console.log(min_c,min_r,max_c,max_r)
+
+    if(Player == 1 ){
+        color=player1Color;
+    }else{
+        color=player2Color;
+    }
+
+    var p_x =55+ ((min_c-1)*100);
+    var p_y =55+ ((min_r)*100);
+
+    var d_x =55+ ((max_c-1)*100);
+    var d_y =55+ ((max_r)*100);
+
+    ctx.beginPath();
+    ctx.moveTo(p_x,p_y)
+    ctx.lineTo(d_x,d_y)
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 15;
+    ctx.stroke();
+    ctx.closePath();
+
+}
+

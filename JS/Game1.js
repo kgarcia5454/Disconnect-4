@@ -12,7 +12,7 @@ function game1Start(){
 
 function Game1(){
     
-    var GameBoard = CreateGameBoardArray();
+    let GameBoard = CreateGameBoardArray();
     
 
     var row = 9;
