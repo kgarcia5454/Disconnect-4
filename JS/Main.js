@@ -27,12 +27,37 @@ function drawPlayerCircle(player,row,Column) {
 
     var p_x =55+ ((Column-1)*100);
     var p_y =55+ ((row)*100);
-
+    //Main Circle
     ctx.beginPath();
-    ctx.arc(p_x,p_y,40,0, Math.PI*2, false);
+    ctx.arc(p_x,p_y,38,0, Math.PI*2, false);
     ctx.fillStyle = color;
     ctx.fill();
+    ctx.strokeStyle = "#000000"
+    ctx.lineWidth = "3.5"
+    ctx.stroke();
     ctx.closePath();
+
+    //Inside Circle
+    ctx.beginPath();
+    ctx.arc(p_x,p_y,30,0, Math.PI*2, false);
+    ctx.strokeStyle = "#000000"
+    ctx.lineWidth = "3"
+    ctx.stroke();
+    ctx.fillStyle = "rgba(0,0,0,0.2)";
+    ctx.fill();
+    ctx.closePath();
+
+    //Inside Circle Lines
+    for(let i = 0; i<2 ; i++){
+        ctx.beginPath();
+        ctx.arc(p_x,p_y,(25 - (5*i)),0, Math.PI*2, false);
+        ctx.strokeStyle = "#000000"
+        ctx.lineWidth = "1"
+        ctx.stroke();
+        ctx.closePath();
+    }
+    
+
 
     if(player == 1 ){
         color=player2Color;
@@ -134,15 +159,19 @@ function Highlights(event){
         color=player2Color;
     }
 
+
     var Col_num = event.target.value;
+   
 
     var h_x = 5 + ((Col_num-1)*100);
 
     ctx.beginPath();
     ctx.rect(h_x,5,100,600)
     ctx.strokeStyle = color;
-    ctx.lineWidth = 4;
+    ctx.lineWidth = 40;
+
     ctx.stroke();
+   
     ctx.closePath();
 }
 
@@ -391,9 +420,15 @@ function UpLeftCheck(GameBoard,Row,Column,Player){
 }
 
 function drawWinScreen(Player){
+    //Failsafe to ensure correct color
+    if(Player == 1 ){
+        color=player1Color;
+    }else{
+        color=player2Color;
+    }
 
     var WinText = "Player "+Player+ " wins!";
-
+    ctx.fillStyle = color;
     ctx.fillText(WinText,canvas.width/1.9,canvas.height-30);
 
 }

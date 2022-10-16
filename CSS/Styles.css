@@ -15,9 +15,16 @@ body,html{
 
 #myCanvas{
     position: absolute;
-    outline: black 4px solid;
+    border: black 4px solid;
+    border-radius: 5%;
     z-index: 0;
+    box-shadow: 10px 10px 5px #00000086;
     
+    
+}
+
+.walter{
+    border-radius: 5%;
 }
 
 .Button,.OptionButton,.Game2Button{

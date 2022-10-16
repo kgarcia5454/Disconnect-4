@@ -10,10 +10,10 @@ function game1Start(){
     Game1();
 }
 
-
 function Game1(){
     
     var GameBoard = CreateGameBoardArray();
+    
 
     var row = 9;
     var Win = false;
