@@ -10,7 +10,7 @@ function drawMenu(){
 
     ctx.beginPath();
     ctx.rect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle= " #00008b";
+    ctx.fillStyle= "rgba(10, 10, 255,0.25)";
     ctx.fill(); 
     ctx.closePath();
 
