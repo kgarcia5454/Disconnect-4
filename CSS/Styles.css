@@ -14,48 +14,17 @@ body,html{
 #background{
     height: 100%;
     width: 100%;
-    background: #56CCF2;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: linear-gradient(135deg, #9aa6ff, #060025);
     position: absolute;
     
 }
-
-.token{
-    height: 4vh;
-    width: 4vh;
-    position: absolute;
-    top:-20vh;
-    background-color: rgba(255, 0, 0, 0.524);
-    animation: fallen;
-    animation-iteration-count: infinite;
-    animation-duration: 5s;
-    border-radius: 50%;
-}
-
-@keyframes fallen {
-    0%{
-        top:-20vh
-    }
-    100%{
-        top:130vh
-    }
-}
-
 
 #myCanvas{
     position: absolute;
-    border: black 4px solid;
-    border-radius: 5%;
-    z-index: 0;
-    box-shadow: 10px 10px 5px #00000086;
-    
-    
-}
+    border: black 5px solid;
+    border-radius: 6%;
 
-.walter{
-    border-radius: 5%;
+    box-shadow: 10px 10px 5px #00000086;
 }
 
 .Button,.OptionButton,.Game2Button{
@@ -73,10 +42,6 @@ background: linear-gradient(to top, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Fir
     font-size: 3.5vh;
     cursor: pointer;
 }
-
-
-
-        
 
 .Button:hover ,.OptionButton:hover , .Game2Button:hover{
     border: 7px solid #575656;
