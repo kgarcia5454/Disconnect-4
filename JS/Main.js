@@ -17,6 +17,8 @@ var color = player1Color;
 var dx = 55;
 var dy;
 
+let filled = new Array(7);
+
 function drawPlayerCircle(player, row, Column) {
     if (player == 1) {
         color = player1Color;
@@ -26,6 +28,10 @@ function drawPlayerCircle(player, row, Column) {
 
     var p_x = 55 + (Column - 1) * 100;
     var p_y = 55 + row * 100;
+
+    if(row==0){
+        filled.push(Column);
+    }
     //Main Circle
     ctx.beginPath();
     ctx.arc(p_x, p_y, 38, 0, Math.PI * 2, false);
@@ -69,8 +75,10 @@ function drawPlayerCircle(player, row, Column) {
     } else {
         color = player1Color;
     }
-
-    Unlighter(Column);
+    if(row != 0){
+        Unlighter(Column);
+    }
+    
 }
 
 function drawGameBoard() {
@@ -158,9 +166,16 @@ function Highlights(event) {
         color = player2Color;
     }
 
+
     var Col_num = event.target.value;
 
     var p_x = 55 + (Col_num - 1) * 100;
+
+    if(filled.includes(Col_num)){
+        p_x = -500;
+    }
+
+
 
     //Main Circle
     ctx.beginPath();
@@ -204,7 +219,12 @@ function Highlights(event) {
 function Unlights(event) {
     var Col_num = event.target.value;
 
+
     var u_x = 55 + (Col_num - 1) * 100;
+
+    if(filled.includes(Col_num)){
+        u_x = -500
+    }
 
     ctx.beginPath();
     ctx.arc(u_x, 55, 40, 0, Math.PI * 2, false);

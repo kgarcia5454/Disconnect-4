@@ -19,7 +19,7 @@ function drawMenu(){
 }
 
 function drawTitle(){
-    var Title = "Dis-connect 4";
+    var Title = "Dis-Connect 4";
 
     
 
