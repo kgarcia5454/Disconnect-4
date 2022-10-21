@@ -19,6 +19,7 @@ var dy;
 
 let filled = new Array(7);
 
+
 function drawPlayerCircle(player, row, Column) {
     if (player == 1) {
         color = player1Color;
@@ -30,7 +31,7 @@ function drawPlayerCircle(player, row, Column) {
     var p_y = 55 + row * 100;
 
     if(row==0){
-        filled.push(Column);
+        filled[Column] = Column
     }
     //Main Circle
     ctx.beginPath();
@@ -87,6 +88,7 @@ function drawGameBoard() {
     }
 
     HideButtons();
+    filled = new Array(7);
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -306,6 +308,7 @@ function CreateGameBoardArray() {
 
     return GameBoardArray;
 }
+
 
 function tokenCheck(Column, GameBoard, player) {
     var Available = false;
@@ -594,4 +597,11 @@ function drawWinLine(min_c, min_r, max_c, max_r, Player) {
     ctx.lineWidth = 10;
     ctx.stroke();
     ctx.closePath();
+}
+
+function filledCheck(Column){
+    console.log(Column);
+    if(filled.includes(Column)){
+        filled[Column] = 0;
+    }
 }

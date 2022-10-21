@@ -70,7 +70,8 @@ async function MoveMode() {
 
             row = OpponentTokenCheck(pressed, GameBoard, player);
 
-            if (row != 9) {
+            if (row != 9) { 
+                filledCheck(pressed)
                 MoveOpponentCircle();
             } else {
                 MoveStyle = 0;
@@ -138,7 +139,9 @@ function MoveOpponentCircle() {
             row = tokenCheck(pressed, GameBoard, Moving);
 
             if (row != 9) {
+                
                 GameBoard[row][pressed - 1] = Moving;
+                
                 drawPlayerCircle(Moving, row, pressed);
                 opponentWin=OpponentWinCheck(GameBoard, row, pressed, Moving);
 
