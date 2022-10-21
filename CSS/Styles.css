@@ -185,7 +185,9 @@ body,html{
         top:1vh;
         left: 1vw;
         height: 80%;
-        width: 12%;
+        width: fit-content;
+        padding-left: 1vw;
+        padding-right: 1vw;
     }
 
     #Controls{

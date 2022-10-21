@@ -18,7 +18,7 @@ var dx = 55;
 var dy;
 
 let filled = new Array(7);
-
+let Moving = 0;
 
 function drawPlayerCircle(player, row, Column) {
     if (player == 1) {
@@ -79,6 +79,10 @@ function drawPlayerCircle(player, row, Column) {
     if(row != 0){
         Unlighter(Column);
     }
+
+    if(Moving==1){
+        MovingCheck();
+    }
     
 }
 
@@ -112,10 +116,17 @@ function drawGameBoardSlots() {
     ctx.beginPath();
     ctx.arc(dx, dy, 40, 0, Math.PI * 2, false);
     ctx.lineWidth = 10;
-    ctx.strokeStyle = "#2c2cc7";
+    ctx.strokeStyle = "#4f4fd8";
     ctx.stroke();
     ctx.fillStyle = "#010145";
     ctx.fill();
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.arc(dx, dy, 45, 0, Math.PI * 2, false);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "black";
+    ctx.stroke();
     ctx.closePath();
 }
 
@@ -166,9 +177,9 @@ function Highlights(event) {
         color = player1Color;
     } else {
         color = player2Color;
-    }
-
-
+    }  
+    
+    
     var Col_num = event.target.value;
 
     var p_x = 55 + (Col_num - 1) * 100;
@@ -177,7 +188,14 @@ function Highlights(event) {
         p_x = -500;
     }
 
-
+    if(Moving==1){
+        var O_color = color;
+        if (player == 1) {
+            color = player2Color;
+        } else {
+            color = player1Color;
+        }
+    }
 
     //Main Circle
     ctx.beginPath();
@@ -216,6 +234,17 @@ function Highlights(event) {
     ctx.fillStyle = "rgba(1, 1, 69,0.3)";
     ctx.fill();
     ctx.closePath();
+
+    if(Moving==1){
+        ctx.beginPath();
+        ctx.arc(p_x, 55, 10, 0, Math.PI * 2, false);
+        ctx.fillStyle = O_color;
+        ctx.fill();
+        ctx.strokeStyle = "#000000";
+        ctx.lineWidth = "3.5";
+        ctx.stroke();
+        ctx.closePath();
+    }
 }
 
 function Unlights(event) {
@@ -245,6 +274,7 @@ function Unlighter(Column) {
     ctx.fillStyle = "rgba(1, 1, 69,1)";
     ctx.fill();
     ctx.closePath();
+    
 
     Highlighter(Col_num);
 }
@@ -254,6 +284,15 @@ function Highlighter(Column) {
     var Col_num = Column;
 
     var p_x = 55 + (Col_num - 1) * 100;
+
+    if(Moving==1){
+        var O_color = color;
+        if (player == 1) {
+            color = player2Color;
+        } else {
+            color = player1Color;
+        }
+    }
 
     //Main Circle
     ctx.beginPath();
@@ -292,6 +331,17 @@ function Highlighter(Column) {
     ctx.fillStyle = "rgba(1, 1, 69,0.4)";
     ctx.fill();
     ctx.closePath();
+
+    if(Moving==1){
+        ctx.beginPath();
+        ctx.arc(p_x, 55, 10, 0, Math.PI * 2, false);
+        ctx.fillStyle = O_color;
+        ctx.fill();
+        ctx.strokeStyle = "#000000";
+        ctx.lineWidth = "3.5";
+        ctx.stroke();
+        ctx.closePath();
+    }
 }
 
 //Game Functions
@@ -305,6 +355,8 @@ function CreateGameBoardArray() {
     for (var i = 0; i < R; i++) {
         GameBoardArray[i] = Array(C).fill(val);
     }
+
+    Moving=0;
 
     return GameBoardArray;
 }
@@ -603,5 +655,13 @@ function filledCheck(Column){
     console.log(Column);
     if(filled.includes(Column)){
         filled[Column] = 0;
+    }
+}
+
+function MovingCheck(){
+    if(Moving==0){
+        Moving=1;
+    }else{
+        Moving = 0;
     }
 }

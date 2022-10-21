@@ -72,6 +72,8 @@ async function MoveMode() {
 
             if (row != 9) { 
                 filledCheck(pressed)
+                MovingCheck();
+                Highlighter(pressed)
                 MoveOpponentCircle();
             } else {
                 MoveStyle = 0;
@@ -123,6 +125,7 @@ function MoveOpponentCircle() {
     var row = 9;
     var pressed;
     var Moving;
+   
 
     $("button")
         .unbind()
@@ -137,12 +140,15 @@ function MoveOpponentCircle() {
                 Moving = 1;
             }
             row = tokenCheck(pressed, GameBoard, Moving);
-
+            
+        
             if (row != 9) {
                 
                 GameBoard[row][pressed - 1] = Moving;
                 
+                
                 drawPlayerCircle(Moving, row, pressed);
+                
                 opponentWin=OpponentWinCheck(GameBoard, row, pressed, Moving);
 
                 if (opponentWin) {
