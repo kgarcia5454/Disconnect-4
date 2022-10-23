@@ -42,13 +42,15 @@
         margin-top: 77vh;
         margin-left: 4vw;
         height: 10%;
-        width: 12%;
+        width: fit-content;
+        padding-left: 1vw;
+        padding-right: 1vw;
     }
 
     .Game2Button{
         position: relative;
         margin-left: 3vw;
-        width: 37%;
+        width: 35%;
         height:10%;
     }
 
@@ -93,7 +95,7 @@
         position: relative;
         top: 3vh;
         left:5vw;
-        height: 6%;
+        height: 9%;
         width: 20%;  
     }
 

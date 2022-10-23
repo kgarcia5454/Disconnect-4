@@ -34,6 +34,7 @@ function drawPlayerCircle(player, row, Column) {
         filled[Column] = Column
     }
     //Main Circle
+    ctx.save()
     ctx.beginPath();
     ctx.arc(p_x, p_y, 38, 0, Math.PI * 2, false);
     ctx.fillStyle = color;
@@ -42,6 +43,7 @@ function drawPlayerCircle(player, row, Column) {
     ctx.lineWidth = "3.5";
     ctx.stroke();
     ctx.closePath();
+    ctx.restore()
 
     //Inside Circle
     ctx.beginPath();

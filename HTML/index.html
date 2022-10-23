@@ -38,19 +38,28 @@
 
                 <div id="Options">
                     <button class="OptionButton" onclick = "drawMenu()" id="Back"> Back </button>
-                    <input type="text" class = "OptionText" id="Player1Color" name="Player1Color">
-                    <button class="OptionButton" id="P1Submit" value="P1color"> Submit </button>
-
-                    <input type="text" class = "OptionText" id="Player2Color" name="Player2Color">
-                    <button class="OptionButton" id="P2Submit" value="P2color"> Submit </button>
-                    <div id = "MessageSection">
-                        <p id="Message"></p>
+                    <div class="PlayerColors" id="Player1Colors">
+                        <button onclick="changeColor(this)" value="red" class = "colorButton" id="P1"></button>
+                        <button onclick="changeColor(this)" value="green" class = "colorButton"id="P1"> </button>
+                        <button onclick="changeColor(this)" value="blue" class = "colorButton"id="P1"> </button>
+                        <button onclick="changeColor(this)" value="pink" class = "colorButton" id="P1"></button>
+                        <button onclick="changeColor(this)" value="yellow" class = "colorButton"id="P1"></button>
+                        <button onclick="changeColor(this)" value="purple" class = "colorButton"id="P1"></button>
+                        <button onclick="changeColor(this)" value="orange" class = "colorButton"id="P1"></button>
+                        <button onclick="changeColor(this)" value="#707bc0" class = "colorButton"id="P1"></button>
                     </div>
-                    
-                </div>
 
-  
-       
+                    <div class="PlayerColors" id="Player2Colors">
+                        <button onclick="changeColor(this)" value="red" class = "colorButton" id="P2"></button>
+                        <button onclick="changeColor(this)" value="green" class = "colorButton" id="P2"> </button>
+                        <button onclick="changeColor(this)" value="blue" class = "colorButton"id="P2"> </button>
+                        <button onclick="changeColor(this)" value="pink" class = "colorButton" id="P2"></button>
+                        <button onclick="changeColor(this)" value="yellow" class = "colorButton" id="P2"></button>
+                        <button onclick="changeColor(this)" value="purple" class = "colorButton"id="P2"></button>
+                        <button onclick="changeColor(this)" value="orange" class = "colorButton"id="P2"></button>
+                        <button onclick="changeColor(this)" value="#707bc0" class = "colorButton"id="P2"></button>
+                    </div>
+                </div>
     </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

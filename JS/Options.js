@@ -3,6 +3,8 @@ var in_P1Color = document.getElementById("Player1Color");
 var in_P2Color = document.getElementById("Player2Color");
 var Message = document.getElementById("Message");
 
+const colors = ["red","green","blue","pink","yellow","purple","orange","#707bc0"]
+
 function drawOptions(){
     DisableColumn();
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -19,7 +21,7 @@ function drawOptions(){
 
     drawOptionLabels();
 
-    submit();
+    drawColorTokens();
 
 }
 
@@ -41,11 +43,9 @@ function drawOptionLabels(){
     ctx.font = "30px Sans-serif";
     ctx.textAlign = "center";
     ctx.fillStyle = "white"
-    ctx.shadowColor = "#00000067";
-    ctx.shadowOffsetX=-10;
-    ctx.shadowOffsetY=10;
-    ctx.shadowBlur = 4;
-    ctx.fillText(Label1,canvas.width/5,canvas.height/3.5);
+    ctx.lineWidth=7;
+    ctx.strokeText(Label1,canvas.width/4.5,canvas.height/3.5);
+    ctx.fillText(Label1,canvas.width/4.5,canvas.height/3.5);
     ctx.shadowColor='rgba(0,0,0,0)';
 
     var Label2 = "Player 2 Color:";
@@ -53,51 +53,77 @@ function drawOptionLabels(){
     ctx.font = "30px Sans-serif";
     ctx.textAlign = "center";
     ctx.fillStyle = "white"
-    ctx.shadowColor = "#00000067";
-    ctx.shadowOffsetX=-10;
-    ctx.shadowOffsetY=10;
-    ctx.shadowBlur = 4;
-    ctx.fillText(Label2,canvas.width/5,canvas.height/2.3);
-    ctx.shadowColor='rgba(0,0,0,0)';
+    ctx.strokeText(Label2,canvas.width/1.3,canvas.height/3.5);
+    ctx.fillText(Label2,canvas.width/1.3,canvas.height/3.5);
 }
 
-function submit(){
-    $("button").click(function() {
-        var pressed = $(this).val();
+function drawColorTokens(){
 
-        if(pressed=="P1color"){
-            var colorTest = isColor(in_P1Color.value);
-            if(colorTest){
-                player1Color =in_P1Color.value;
-                color = player1Color
-                Message.innerHTML = "Player 1's color has changed to " + player1Color;
-            }else{
-                Message.innerHTML = "Not a color!"
+    for(let j = 0;j<=1; j++){
+        let p1_y = 275
+        for(let i = 0; i<=7; i++){
+
+            let p1_x = 65 + (i*70) + (j*390)
+    
+            if(i==4){
+                
+                p1_y = p1_y + 90
             }
+    
+            if(i>=4){
+                p1_x = 65 + ((i-4)*70) + (j*390)
+            }
+            color = colors[i];
+    
+            //Main Circle
+            ctx.save()
+            ctx.beginPath();
+            ctx.arc(p1_x,p1_y, 28, 0, Math.PI * 2, false);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.strokeStyle = "#000000";
+            ctx.lineWidth = "3.5";
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore()
+    
+            //Inside Circle
+            ctx.beginPath();
+            ctx.arc(p1_x, p1_y, 20, 0, Math.PI * 2, false);
+            ctx.strokeStyle = "#000000";
+            ctx.lineWidth = "3";
+            ctx.stroke();
+            ctx.fillStyle = "rgba(0,0,0,0.2)";
+            ctx.fill();
+            ctx.closePath();
+    
+            //Inside Circle Lines
+            for (let i = 0; i < 2; i++) {
+                ctx.beginPath();
+                ctx.arc(p1_x, p1_y, 15 - 5 * i, 0, Math.PI * 2, false);
+                ctx.strokeStyle = "#000000";
+                ctx.lineWidth = "1";
+                ctx.stroke();
+                ctx.closePath();
+            }
+    
         }
 
-        if(pressed=="P2color"){
-            var colorTest = isColor(in_P2Color.value);
-            if(colorTest){
-                player2Color =in_P2Color.value;
-                Message.innerHTML = "Player 2's color has changed to " + player2Color;
-            }else{
-                Message.innerHTML = "Not a color!"
-            }
-        }
-
-        
-
-
-
-    });
+    }
+    
+    
 }
 
-function isColor(ColorAttempt){
-    var attempt = new Option().style;
-    attempt.color = ColorAttempt;
-    return attempt.color !== "";
+function changeColor(event){
+    console.log(event.value)
+    if(event.id == "P1"){
+        player1Color = event.value
+        color = player1Color
+    }else if(event.id == "P2"){
+        player2Color = event.value
+    }
 }
+
 
 function ShowOptions(){
     Options.style.display = "initial";

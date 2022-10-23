@@ -194,9 +194,16 @@ function ClearSlot(row, Column) {
     ctx.beginPath();
     ctx.arc(p_x, p_y, 40, 0, Math.PI * 2, false);
     ctx.lineWidth = 10;
-    ctx.strokeStyle = "#2c2cc7";
+    ctx.strokeStyle = "#4f4fd8";
     ctx.stroke();
     ctx.fillStyle = "#010145";
     ctx.fill();
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.arc(p_x, p_y, 45, 0, Math.PI * 2, false);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "black";
+    ctx.stroke();
     ctx.closePath();
 }

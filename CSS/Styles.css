@@ -43,6 +43,30 @@ body,html{
     cursor: pointer;
 }
 
+.PlayerColors{
+   
+    position: absolute;
+    display: grid;
+    grid-template-columns: 3.7vw 3.7vw 3.7vw 3.7vw;
+    row-gap:3vh;
+    opacity: 0;
+}
+
+#Player1Colors{
+    top: 23.2vh;
+    left:2.1vw;
+}
+#Player2Colors{
+    top: 23.2vh;
+    left:22.7vw;
+}
+
+.colorButton{
+    height: 5.5vh;
+    width: 3vw;
+    border-radius: 100%;
+}
+
 .Button:hover ,.OptionButton:hover , .Game2Button:hover{
     border: 7px solid #575656;
 }
@@ -128,7 +152,10 @@ body,html{
         position: relative;
         margin-left: 2vw;
         height: 5%;
-        width: 7%;
+        width: fit-content;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        padding-bottom: 4vh;
         
     }
 
