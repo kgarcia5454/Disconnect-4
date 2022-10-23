@@ -3,7 +3,7 @@ var in_P1Color = document.getElementById("Player1Color");
 var in_P2Color = document.getElementById("Player2Color");
 var Message = document.getElementById("Message");
 
-const colors = ["red","green","blue","pink","yellow","purple","orange","#707bc0"]
+const colors = ["red","green","blue","#FFC0CB","yellow","purple","orange","#707bc0"]
 
 function drawOptions(){
     DisableColumn();
@@ -22,6 +22,11 @@ function drawOptions(){
     drawOptionLabels();
 
     drawColorTokens();
+
+
+    selectedP1Color(player1Color);
+    selectedP2Color(player2Color);
+
 
 }
 
@@ -74,9 +79,8 @@ function drawColorTokens(){
                 p1_x = 65 + ((i-4)*70) + (j*390)
             }
             color = colors[i];
-    
+
             //Main Circle
-            ctx.save()
             ctx.beginPath();
             ctx.arc(p1_x,p1_y, 28, 0, Math.PI * 2, false);
             ctx.fillStyle = color;
@@ -85,7 +89,6 @@ function drawColorTokens(){
             ctx.lineWidth = "3.5";
             ctx.stroke();
             ctx.closePath();
-            ctx.restore()
     
             //Inside Circle
             ctx.beginPath();
@@ -106,12 +109,8 @@ function drawColorTokens(){
                 ctx.stroke();
                 ctx.closePath();
             }
-    
         }
-
-    }
-    
-    
+    } 
 }
 
 function changeColor(event){
@@ -119,10 +118,84 @@ function changeColor(event){
     if(event.id == "P1"){
         player1Color = event.value
         color = player1Color
+        selectedP1Color(player1Color)
     }else if(event.id == "P2"){
         player2Color = event.value
+        selectedP2Color(player2Color)
     }
 }
+
+function selectedP1Color(color){
+
+    ctx.clearRect(30,240,280,159)
+    ctx.beginPath();
+    ctx.rect(30,240,280,159);
+    ctx.fillStyle= "rgba(10, 10, 255,0.25)";
+    ctx.fill(); 
+    ctx.closePath();
+
+    drawColorTokens();
+
+    let num = colors.indexOf(color);
+    let p1_x = 65 + (num*70)
+    let p1_y = 275
+
+    if(num>3){
+        p1_y = 275+90
+        p1_x = 65 + ((num-4)*70)
+    }
+
+    
+
+    ctx.beginPath();
+    ctx.arc(p1_x, p1_y, 31, 0, Math.PI * 2, false);
+    ctx.strokeStyle = "yellow"
+    ctx.lineWidth = "2"
+    ctx.shadowBlur = "4"
+    ctx.shadowColor = "white"
+    
+    ctx.stroke();
+    ctx.closePath();
+    ctx.shadowBlur = "0"
+
+
+}
+
+function selectedP2Color(color){
+
+    ctx.clearRect(420,240,280,159)
+    ctx.beginPath();
+    ctx.rect(420,240,280,159);
+    ctx.fillStyle= "rgba(10, 10, 255,0.25)";
+    ctx.fill(); 
+    ctx.closePath();
+
+    drawColorTokens();
+
+    let num = colors.indexOf(color);
+    let p1_x = 455 + (num*70)
+    let p1_y = 275
+
+    if(num>3){
+        p1_y = 275+90
+        p1_x = 455 + ((num-4)*70)
+    }
+
+    
+
+    ctx.beginPath();
+    ctx.arc(p1_x, p1_y, 31, 0, Math.PI * 2, false);
+    ctx.strokeStyle = "yellow"
+    ctx.lineWidth = "2"
+    ctx.shadowColor = "white"
+    ctx.shadowBlur = "4"
+    ctx.stroke();
+    ctx.closePath();
+    ctx.shadowBlur = "0"
+
+
+}
+
 
 
 function ShowOptions(){

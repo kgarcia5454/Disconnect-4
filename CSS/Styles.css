@@ -44,12 +44,12 @@ body,html{
 }
 
 .PlayerColors{
-   
     position: absolute;
     display: grid;
     grid-template-columns: 3.7vw 3.7vw 3.7vw 3.7vw;
     row-gap:3vh;
     opacity: 0;
+    
 }
 
 #Player1Colors{
@@ -59,6 +59,7 @@ body,html{
 #Player2Colors{
     top: 23.2vh;
     left:22.7vw;
+    
 }
 
 .colorButton{
