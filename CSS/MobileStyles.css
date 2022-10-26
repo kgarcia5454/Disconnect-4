@@ -91,6 +91,28 @@
         left:10vw;
     }
 
+    .PlayerColors{
+        grid-template-columns:9vw 9.9vw 9.5vw 9vw;
+        row-gap:4vh;
+        
+    }
+
+    .colorButton{
+        height: 7vh;
+        width: 7.5vw;
+        border-radius: 100%;
+    }
+
+    #Player1Colors{
+        top: 30.8vh;
+        left:6.5vw;
+    }
+    #Player2Colors{
+        top: 30.8vh;
+        left:59.7vw;
+        
+    }
+
     #Back{
         position: relative;
         top: 3vh;

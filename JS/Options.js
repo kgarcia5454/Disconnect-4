@@ -114,14 +114,23 @@ function drawColorTokens(){
 }
 
 function changeColor(event){
-    console.log(event.value)
     if(event.id == "P1"){
-        player1Color = event.value
-        color = player1Color
-        selectedP1Color(player1Color)
+        if(event.value==player2Color){
+           drawError("2")
+
+        }else{
+            player1Color = event.value
+            color = player1Color
+            selectedP1Color(player1Color)
+        }
     }else if(event.id == "P2"){
-        player2Color = event.value
-        selectedP2Color(player2Color)
+        if(event.value==player1Color){
+            drawError("1")
+
+        }else{
+            player2Color = event.value
+            selectedP2Color(player2Color)
+        }
     }
 }
 
@@ -213,6 +222,28 @@ function ColorText (){
 
     ctx.fillText(WinText,canvas.width/1.9,canvas.height-30);
 
+}
+
+function drawError(player){
+
+    var Error = ("Player "+player+ " is using that color");
+    ctx.clearRect(canvas.width/11,canvas.height-230,canvas.width,70)
+
+    ctx.beginPath();
+    ctx.rect(canvas.width/11,canvas.height-230,canvas.width,70)
+    ctx.fillStyle= "rgba(10, 10, 255,0.25)";
+    ctx.fill(); 
+    ctx.closePath();
+
+
+    ctx.font = "50px Sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillStyle = "white";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth= 5;
+    ctx.strokeText(Error,canvas.width/2,canvas.height- 190);
+    ctx.fillText(Error,canvas.width/2,canvas.height-190);
+    
 }
 
 

@@ -165,12 +165,17 @@ function HideGameBack() {
 function showGame2Buttons() {
     for (let value of Game2Buttons) {
         value.style.display = "initial";
+        value.style.visibility = "visible";
     }
 }
 
-function hideGame2Buttons() {
+function hideGame2Buttons(text) {
     for (let value of Game2Buttons) {
-        value.style.display = "none";
+        if(value.value == text){
+            value.style.visibility = "hidden";
+        }else if(text=="Game1"){
+            value.style.display = "none";
+        }
     }
 }
 
@@ -618,8 +623,16 @@ function drawWinScreen(Player) {
     }
 
     var WinText = "Player " + Player + " wins!";
-    ctx.fillStyle = color;
-    ctx.fillText(WinText, canvas.width / 1.9, canvas.height - 30);
+
+    ctx.font = "impact";
+    ctx.fillStyle = "color";
+    ctx.lineWidth=1;
+    ctx.lineJoin = 'miter';
+    ctx.miterLimit = 3;
+    ctx.strokeStyle = "rgb(1,1,1)";
+    ctx.strokeText(WinText, canvas.width / 1.8, canvas.height - 30);
+    ctx.fillText(WinText, canvas.width /1.8,canvas.height - 30);
+    
 }
 
 function drawWinLine(min_c, min_r, max_c, max_r, Player) {
@@ -654,7 +667,6 @@ function drawWinLine(min_c, min_r, max_c, max_r, Player) {
 }
 
 function filledCheck(Column){
-    console.log(Column);
     if(filled.includes(Column)){
         filled[Column] = 0;
     }

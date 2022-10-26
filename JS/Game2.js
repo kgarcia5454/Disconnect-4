@@ -3,6 +3,7 @@ var Drop = 0;
 var Game2Buttons = document.getElementsByClassName("Game2Button");
 var GameBoard;
 var MoveStyle = 0;
+var hide = "nothing"
 
 function game2Start() {
     player = 1;
@@ -15,8 +16,10 @@ function game2Start() {
 
 function DropMode() {
     MoveStyle = 1;
+    hide = "Move"
+    
     EnableColumn();
-    hideGame2Buttons();
+    hideGame2Buttons(hide);
 
     var row = 9;
     var Win = false;
@@ -57,7 +60,8 @@ function DropMode() {
 async function MoveMode() {
     MoveStyle = 1;
     EnableColumn();
-    hideGame2Buttons();
+    hide = "Drop"
+    hideGame2Buttons(hide);
 
     var row = 9;
     var new_row = 9;

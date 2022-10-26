@@ -4,7 +4,7 @@ function game1Start(){
     player = 1;
     
     drawGameBoard();
-    hideGame2Buttons();
+    hideGame2Buttons("Game1");
     EnableColumn()
     ShowGameBack();
     Game1();
